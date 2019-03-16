@@ -11,8 +11,12 @@ const App = () => (
         href="https://reactjs.org"
         target="_blank"
         rel="noopener noreferrer"
+        alt="roman"
       >
-        kkErat diam diam ipsum kasd sit dolore no est, lorem ipsum sit et et. Est kasd sadipscing est voluptua sed erat erat. Sea elitr dolores et duo stet accusam tempor, eirmod at takimata magna sit ipsum consetetur, sanctus ipsum sit dolores lorem. Takimata takimata tempor et elitr duo gubergren sadipscing..
+        kkErat diam diam ipsum kasd sit dolore no est, lorem ipsum sit et et. Est kasd sadipscing
+        est voluptua sed erat erat. Sea elitr dolores et duo stet accusam tempor, eirmod at takimata
+        magna sit ipsum consetetur, sanctus ipsum sit dolores lorem. Takimata takimata tempor et
+        elitr duo gubergren sadipscing..
       </a>
     </header>
   </div>
