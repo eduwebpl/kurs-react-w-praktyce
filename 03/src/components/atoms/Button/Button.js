@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const Button = styled.button`
   padding: 0;
   background-color: ${({ theme }) => theme.primary};
-  width: ${({ width }) => width || '220px'};
+  width: 220px;
   height: 47px;
   border: none;
   border-radius: 50px;
@@ -23,5 +23,3 @@ const Button = styled.button`
 `;
 
 export default Button;
-
-// background-color: ${({ color }) => color || 'hsl(49, 100%, 58%)'};
