@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
+import LinkIcon from 'assets/icons/link.svg';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -53,12 +54,27 @@ const StyledAvatar = styled.img`
   top: 25px;
 `;
 
+const StyledLinkButton = styled.a`
+  display: block;
+  width: 47px;
+  height: 47px;
+  border-radius: 50px;
+  background: white url(${LinkIcon}) no-repeat;
+  background-size: 60%;
+  background-position: 50%;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
 const Card = ({ cardType }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
       <StyledHeading>Hello Roman</StyledHeading>
       <DateInfo>3 days</DateInfo>
-      <StyledAvatar src="https://avatars.io/twitter/hello_roman" />
+      {cardType === 'twitter' && <StyledAvatar src="https://avatars.io/twitter/hello_roman" />}
+      {cardType === 'article' && <StyledLinkButton href="https://youtube.com/helloroman" />}
     </InnerWrapper>
     <InnerWrapper flex>
       <Paragraph>
