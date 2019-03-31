@@ -70,15 +70,21 @@ const StyledLinkButton = styled.a`
 `;
 
 class Card extends Component {
-  state: {
+  state = {
     redirect: false,
   };
 
+  handleCardClick = () => this.setState({ redirect: true });
+
   render() {
     const { id, cardType, title, created, twitterName, articleUrl, content } = this.props;
+    const { redirect } = this.state;
 
+    if (redirect) {
+      return <Redirect to={`${cardType}/${id}`} />;
+    }
     return (
-      <StyledWrapper>
+      <StyledWrapper onClick={this.handleCardClick}>
         <InnerWrapper activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
@@ -97,7 +103,8 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  id: PropTypes.string.isRequired,
+  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
@@ -106,7 +113,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'notes',
   twitterName: null,
   articleUrl: null,
 };
