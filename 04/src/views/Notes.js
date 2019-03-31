@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const notes = [
@@ -34,11 +34,11 @@ const notes = [
 ];
 
 const Notes = () => (
-  <UserPageTemplate pageType="note">
+  <GridTemplate pageType="note">
     {notes.map(({ title, content, created, id }) => (
       <Card cardType="note" title={title} content={content} created={created} key={id} />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 
 export default Notes;
