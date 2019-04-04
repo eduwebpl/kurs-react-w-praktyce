@@ -5,6 +5,7 @@
     "jest": true
   },
   "globals": {
+    "window": true,
     "document": true
   },
   "rules": {
