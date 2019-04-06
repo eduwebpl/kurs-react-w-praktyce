@@ -30,7 +30,7 @@ const StyledLink = styled(Link)`
   margin: 20px 0 50px;
 `;
 
-const LoginPage = () => (
+const RegisterPage = () => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -59,14 +59,14 @@ const LoginPage = () => (
               value={values.title}
             />
             <Button activecolor="notes" type="submit">
-              sign in
+              register
             </Button>
           </StyledForm>
-          <StyledLink to={routes.register}>I want my account!</StyledLink>
+          <StyledLink to={routes.login}>I want to log in!</StyledLink>
         </>
       )}
     </Formik>
   </AuthTemplate>
 );
 
-export default LoginPage;
+export default RegisterPage;
