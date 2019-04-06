@@ -5,7 +5,7 @@ const withContext = Component => {
   return function contextComponent(props) {
     return (
       <PageContext.Consumer>
-        {context => <Component {...props} context={context} />}
+        {context => <Component {...props} pageContext={context} />}
       </PageContext.Consumer>
     );
   };
