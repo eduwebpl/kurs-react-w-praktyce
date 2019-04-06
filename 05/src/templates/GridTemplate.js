@@ -5,9 +5,13 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
+import NewItemBar from 'components/organisms/NewItemBar/NewItemBar';
+import plusIcon from 'assets/icons/plus.svg';
 import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
+  position: relative;
   padding: 25px 150px 25px 70px;
 `;
 
@@ -43,6 +47,16 @@ const StyledParagraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
+const StyledButtonIcon = styled(ButtonIcon)`
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: ${({ activecolor, theme }) => theme[activecolor]};
+  background-size: 35%;
+  border-radius: 50px;
+  z-index: 10000;
+`;
+
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
     <StyledWrapper>
@@ -54,6 +68,8 @@ const GridTemplate = ({ children, pageContext }) => (
         <StyledParagraph>6 {pageContext}</StyledParagraph>
       </StyledPageHeader>
       <StyledGrid>{children}</StyledGrid>
+      <StyledButtonIcon icon={plusIcon} activecolor={pageContext} />
+      <NewItemBar />
     </StyledWrapper>
   </UserPageTemplate>
 );

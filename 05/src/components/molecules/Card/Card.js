@@ -95,9 +95,10 @@ class Card extends Component {
     if (redirect) {
       return <Redirect to={`${pageContext}/details/${id}`} />;
     }
+
     return (
-      <StyledWrapper>
-        <InnerWrapper onClick={this.handleCardClick} activeColor={pageContext}>
+      <StyledWrapper onClick={this.handleCardClick}>
+        <InnerWrapper activeColor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
           {pageContext === 'twitters' && (
