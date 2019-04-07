@@ -53,14 +53,13 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
-const DetailsTemplate = ({ pageContext, title, created, content, articleUrl, twitterName }) => (
+const DetailsTemplate = ({ pageContext, title, content, articleUrl, twitterName }) => (
   <UserPageTemplate>
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
           {title}
         </StyledHeading>
-        <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
       {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
