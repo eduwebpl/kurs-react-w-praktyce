@@ -1,4 +1,11 @@
-import { ADD_ITEM, REMOVE_ITEM, AUTH_SUCCESS, FETCH_REQUEST, FETCH_SUCCESS } from 'actions';
+import {
+  ADD_ITEM,
+  REMOVE_ITEM_REQUEST,
+  REMOVE_ITEM_SUCCESS,
+  AUTH_SUCCESS,
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+} from 'actions';
 
 const initialState = {
   userID: '5ca8f00a097c3394e62f64ab',
@@ -28,11 +35,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
       };
-    case REMOVE_ITEM:
+    case REMOVE_ITEM_SUCCESS:
       return {
         ...state,
         [action.payload.itemType]: [
-          ...state[action.payload.itemType].filter(item => item.id !== action.payload.id),
+          ...state[action.payload.itemType].filter(item => item._id !== action.payload.id),
         ],
       };
     default:
