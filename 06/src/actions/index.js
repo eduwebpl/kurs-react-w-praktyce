@@ -88,8 +88,14 @@ export const addItem = (itemType, itemContent) => (dispatch, getState) => {
       type: itemType,
       ...itemContent,
     })
-    .then(() => {
-      dispatch({ type: ADD_ITEM_SUCCESS, payload: {} });
+    .then(({ data }) => {
+      dispatch({
+        type: ADD_ITEM_SUCCESS,
+        payload: {
+          itemType,
+          data,
+        },
+      });
     })
     .catch(err => {
       console.log(err);
