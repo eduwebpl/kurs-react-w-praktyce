@@ -10,7 +10,7 @@ import Twitters from 'views/Twitters';
 import DetailsPage from 'views/DetailsPage';
 import LoginPage from 'views/LoginPage';
 import RegisterPage from 'views/RegisterPage';
-
+// komentarz
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>
