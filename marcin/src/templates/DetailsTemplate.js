@@ -65,7 +65,7 @@ const DetailsTemplate = ({ pageContext, title, created, content, articleUrl, twi
       <Paragraph>{content}</Paragraph>
       {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
       {pageContext === 'twitters' && (
-        <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
+        <StyledImage alt={title} src={`https://twitter-avatar.now.sh//${twitterName}`} />
       )}
       <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         save / close
