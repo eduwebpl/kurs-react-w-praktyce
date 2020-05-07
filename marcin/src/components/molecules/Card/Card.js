@@ -14,7 +14,6 @@ const StyledWrapper = styled.div`
   min-height: 380px;
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
-  overflow: hidden;
   position: relative;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
@@ -43,13 +42,13 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledAvatar = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border: 5px solid ${({ theme }) => theme.twitters};
   border-radius: 50%;
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: -20px;
+  top: -20px;
 `;
 
 const StyledLinkButton = styled.a`
@@ -82,8 +81,8 @@ class Card extends Component {
     }
 
     return (
-      <StyledWrapper onClick={this.handleCardClick}>
-        <InnerWrapper activeColor={pageContext}>
+      <StyledWrapper>
+        <InnerWrapper activeColor={pageContext} onClick={this.handleCardClick}>
           <StyledHeading>{title}</StyledHeading>
           {pageContext === 'twitters' && (
             <StyledAvatar src={`https://twitter-avatar.now.sh//${twitterName}`} />

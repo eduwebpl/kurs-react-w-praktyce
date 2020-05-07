@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-export const REMOVE_ITEM = 'REMOVE_ITEM';
-export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_ITEM_REQUEST = 'ADD_ITEM_REQUEST';
+export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
+export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
+
+export const REMOVE_ITEM_REQUEST = 'REMOVE_ITEM_REQUEST';
+export const REMOVE_ITEM_SUCCESS = 'REMOVE_ITEM_SUCCESS';
+export const REMOVE_ITEM_FAILURE = 'REMOVE_ITEM_FAILURE';
+
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
@@ -39,7 +45,6 @@ export const fetchItems = itemType => (dispatch, getState) => {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       dispatch({
         type: FETCH_SUCCESS,
         payload: {
@@ -54,25 +59,46 @@ export const fetchItems = itemType => (dispatch, getState) => {
     });
 };
 
-export const removeItem = (itemType, id) => {
-  return {
-    type: REMOVE_ITEM,
-    payload: {
-      itemType,
-      id,
-    },
-  };
+export const removeItem = (itemType, id) => dispatch => {
+  dispatch({ type: REMOVE_ITEM_REQUEST });
+
+  axios
+    .delete(`http://localhost:9000/api/note/${id}`)
+    .then(() => {
+      dispatch({
+        type: REMOVE_ITEM_SUCCESS,
+        payload: {
+          itemType,
+          id,
+        },
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: REMOVE_ITEM_FAILURE });
+    });
 };
 
-export const addItem = (itemType, itemContent) => {
-  return {
-    type: ADD_ITEM,
-    payload: {
-      itemType,
-      item: {
-        id: '',
-        ...itemContent,
-      },
-    },
-  };
+export const addItem = (itemType, itemContent) => (dispatch, getState) => {
+  dispatch({ type: ADD_ITEM_REQUEST });
+
+  return axios
+    .post('http://localhost:9000/api/note', {
+      userID: getState().userID,
+      type: itemType,
+      ...itemContent,
+    })
+    .then(({ data }) => {
+      dispatch({
+        type: ADD_ITEM_SUCCESS,
+        payload: {
+          itemType,
+          data,
+        },
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: ADD_ITEM_FAILURE });
+    });
 };
