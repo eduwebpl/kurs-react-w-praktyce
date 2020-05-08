@@ -47,8 +47,8 @@ const StyledAvatar = styled.img`
   border: 5px solid ${({ theme }) => theme.twitters};
   border-radius: 50%;
   position: absolute;
-  right: -20px;
-  top: -20px;
+  right: -25px;
+  top: -25px;
 `;
 
 const StyledLinkButton = styled.a`

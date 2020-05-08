@@ -3,7 +3,7 @@ import DetailsTemplate from 'templates/DetailsTemplate';
 import withContext from 'hoc/withContext';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
+/* eslint-disable */
 class DetailsPage extends Component {
   state = {
     activeItem: {
@@ -13,7 +13,6 @@ class DetailsPage extends Component {
       twitterName: '',
     },
   };
-  /* eslint-disable */
 
   componentDidMount() {
     if (this.props.activeItem) {
@@ -52,5 +51,5 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {};
 };
-/* eslint-enable */
+
 export default withContext(connect(mapStateToProps)(DetailsPage));

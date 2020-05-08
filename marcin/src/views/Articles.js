@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
+import { fetchItems as fetchItemsAction } from 'actions';
 
-const Articles = ({ articles }) => (
-  <GridTemplate>
-    {articles.map(({ title, content, articleUrl, id }) => (
-      <Card id={id} title={title} content={content} articleUrl={articleUrl} key={id} />
-    ))}
-  </GridTemplate>
-);
+class Articles extends Component {
+  componentDidMount() {
+    const { fetchItems } = this.props;
+    fetchItems();
+  }
+
+  render() {
+    const { articles } = this.props;
+    return (
+      <GridTemplate>
+        {articles.map(({ title, content, articleUrl, _id: id }) => (
+          <Card id={id} title={title} content={content} articleUrl={articleUrl} key={id} />
+        ))}
+      </GridTemplate>
+    );
+  }
+}
 
 Articles.propTypes = {
   articles: PropTypes.arrayOf(
@@ -31,5 +42,10 @@ const mapStateToProps = state => {
   const { articles } = state;
   return { articles };
 };
-
-export default connect(mapStateToProps)(Articles);
+const mapDispatchToProps = dispatch => ({
+  fetchItems: () => dispatch(fetchItemsAction('articles')),
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Articles);
